@@ -1,0 +1,136 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>predict page</title>
+  </head>
+  <body>
+    <h3>Predict temp(Celcius):</h3>
+    <div align="center" class="main">
+      <h1>Please enter the following information:</h1>
+
+      <form action="/predict/" method="post">
+        {% csrf_token %}
+        <tr>
+          <label for="algo">Choose an algorithm:</label>
+
+          <select name="algo" id="algo">
+            <option value="mlr">Multiple Linear Regression</option>
+            <option value="dtr">Decision Tree Regression</option>
+            <option value="rfr">Random Forest Regression</option>
+            <option value="gnb">Gaussian Naive Bayes</option>
+          </select>
+        </tr>
+        <table>
+          <tr>
+            <td align="right">Max Temp(C):</td>
+            <td align="left">
+              <input
+                type="number"
+                placeholder="15-51"
+                required
+                name="n1"
+                min="15"
+                max="51"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Min Temp(C):</td>
+            <td align="left">
+              <input
+                type="number"
+                placeholder="3-39"
+                required
+                name="n2"
+                min="3"
+                max="39"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Cloud Cover:</td>
+            <td align="left">
+              <input
+                type="number"
+                placeholder="0-100"
+                required
+                name="n3"
+                min="0"
+                max="100"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Humidity:</td>
+            <td align="left">
+              <input
+                type="number"
+                placeholder="2-100"
+                required
+                name="n4"
+                min="2"
+                max="100"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Sun Hour:</td>
+            <td align="left">
+              <input
+                type="number"
+                placeholder="4-14"
+                required
+                name="n5"
+                min="4"
+                max="14"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Precipitation:</td>
+            <td align="left">
+              <input
+                type="number"
+                placeholder="0-21"
+                required
+                name="n6"
+                min="0"
+                max="21"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Pressure:</td>
+            <td align="left">
+              <input
+                type="number"
+                placeholder="986-1024"
+                required
+                name="n7"
+                min="986"
+                max="1024"
+              />
+            </td>
+          </tr>
+          <tr>
+            <td align="right">Windspeed(Kmph):</td>
+            <td align="left">
+              <input
+                type="number"
+                placeholder="0-47"
+                required
+                name="n8"
+                min="0"
+                max="47"
+              />
+            </td>
+          </tr>
+        </table>
+        <input type="submit" />
+      </form>
+      <p>Result:<b>{{result}}</b></p>
+    </div>
+  </body>
+</html>

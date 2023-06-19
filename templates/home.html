@@ -1,0 +1,93 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style type = text/css>
+    .algorithmTables{
+        display: flex;
+    justify-content: space-between;
+    text-align: center;
+    }
+
+    .algorithmTable{
+        display: flex;
+    justify-content: center;
+    }
+
+
+        input[type=submit]{
+        background-color:#4dc3ff;
+        border:2px;
+        color:white;
+        padding:16px 32px;
+        cursor:pointer;
+        margin-top:15px;
+        font-size:15px;
+        font-weight:bold;
+        }
+    </style>
+</head>
+<body>
+<div align = 'center'>
+    <form action="predict">
+        <input type="submit" value = "Predict using algorithms">
+    </form>
+</div>
+<h1>Plotting all column values</h1>
+<img src="data:image/png;base64,{{ allColumn }}" alt="Weather Plot" width="100%">
+<h1>Histogram</h1>
+<img src="data:image/png;base64,{{ histogram }}" alt="Weather Plot" width="100%">
+
+<h1 style="color: #d00000;">Actual vs predicted for each algorithm</h1>
+<div class="algorithmTables">
+    <div>
+        <h1>Multiple Linear Regression</h1>
+    <div class="algorithmTable">{{ mlr|safe }}</div>
+    </div>
+    <div>
+        <h1>Decision Tree Regression</h1>
+    <div class="algorithmTable">{{ dtr|safe }}</div>
+    </div>
+    <div>
+        <h1>Random Forest Regression</h1>
+    <div class="algorithmTable">{{ rfr|safe }}</div>
+    </div>
+    <div>
+        <h1>Gaussian Naive Bayes</h1>
+    <div class="algorithmTable">{{ gnb|safe }}</div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<h1 style="color: #d00000;">Mean absolute error and r2 score</h1>
+<div class="algorithmTables">
+    <div>
+        <h1>Multiple Linear Regression</h1>
+    <p>Mean absolute error: {{mae_mlr}}</p>
+    <p>R2-score: {{r2_mlr}}</p>
+    </div>
+    <div>
+        <h1>Decision Tree Regression</h1>
+        <p>Mean absolute error: {{mae_dtr}}</p>
+        <p>R2-score: {{r2_dtr}}</p>
+    </div>
+    <div>
+        <h1>Random Forest Regression</h1>
+        <p>Mean absolute error: {{mae_rfr}}</p>
+        <p>R2-score: {{r2_rfr}}</p>
+    </div>
+    <div>
+        <h1>Gaussian Naive Bayes</h1>
+        <p>Mean absolute error: {{mae_gnb}}</p>
+        <p>R2-score: {{r2_gnb}}</p>
+    </div>
+</div>
+
+</div>
+</body>
+</html>
